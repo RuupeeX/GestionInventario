@@ -75,6 +75,10 @@ public class ProductValidator {
      * Valida la descripción del producto
      */
     public static void validateDescription(String description) throws InvalidProductException {
+    	if (description == null || description.trim().isEmpty()) {
+    		throw new InvalidProductException("La descripción no puede estar vacía");
+    	}
+
         if (description != null && description.length() > MAX_DESCRIPTION_LENGTH) {
             throw new InvalidProductException(
                 String.format("La descripción no puede exceder %d caracteres", MAX_DESCRIPTION_LENGTH)
